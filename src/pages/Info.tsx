@@ -1,9 +1,7 @@
-import React from 'react'
+import "./Info.css";
 
 const Info = () => {
-  return (
-    <div>Info</div>
-  )
-}
+  return <h2>Info</h2>;
+};
 
-export default Info
+export default Info;

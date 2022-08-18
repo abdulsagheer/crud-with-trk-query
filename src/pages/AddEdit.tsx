@@ -1,9 +1,7 @@
-
+import './AddEdit.css'
 
 const AddEdit = () => {
-  return (
-    <div>AddEdit</div>
-  )
-}
+  return <h2>AddEdit</h2>;
+};
 
-export default AddEdit
+export default AddEdit;
