@@ -6,11 +6,32 @@ export const contactsApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:5000",
   }),
+  tagTypes: ["Contact"],
   endpoints: (builder) => ({
-    data: builder.query<Contact[], void>({
+    contacts: builder.query<Contact[], void>({
       query: () => "/contacts",
+      providesTags: ["Contact"],
+    }),
+    addContact: builder.mutation<{}, Contact>({
+      query: (contact) => ({
+        url: "/contacts",
+        method: "POST",
+        body: contact,
+      }),
+      invalidatesTags: ["Contact"],
+    }),
+    deleteContact: builder.mutation<void, string>({
+      query: (id) => ({
+        url: `/contacts/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Contact"],
     }),
   }),
 });
 
-export const { useDataQuery } = contactsApi;
+export const {
+  useContactsQuery,
+  useAddContactMutation,
+  useDeleteContactMutation,
+} = contactsApi;
